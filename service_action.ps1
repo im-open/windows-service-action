@@ -39,12 +39,9 @@ $script = {
     # This should be pre-installed on Windows 2012 R2 and later
     # https://docs.microsoft.com/en-us/powershell/module/?term=webadministration
 
+    # Only try to stop if it exists
     $exists = Get-Service -Name $Using:service_name
-
-    if (!$exists) {
-        throw "$Using:service_name does is not registered or does exist."
-    }
-    else {
+    if ($exists) {
         if ($Using:action -eq 'stop' -or $Using:action -eq 'restart') {
             net stop $Using:service_name
         }
