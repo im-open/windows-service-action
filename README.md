@@ -1,12 +1,21 @@
-# composite-run-steps-action-template
+# Windows Service Action
 
-This template can be used to quickly start a new custom composite-run-steps action repository.  Click the `Use this template` button at the top to get started.
+This action will start or stop a Windows service on an on-prem Windows OS machine.
+
+## Index <!-- omit in toc -->
+
+- [TODOs](#todos)
+- [Inputs](#inputs)
+- [Example](#example)
+- [Code of Conduct](#code-of-conduct)
+- [License](#license)
 
 ## TODOs
+
 - Readme
   - [ ] Update the Inputs section with the correct action inputs
   - [ ] Update the Outputs section with the correct action outputs
-  - [ ] Update the Example section with the correct usage   
+  - [ ] Update the Example section with the correct usage
 - action.yml
   - [ ] Fill in the correct name, description, inputs and outputs and implement steps
 - CODEOWNERS
@@ -38,19 +47,19 @@ This template can be used to quickly start a new custom composite-run-steps acti
     | pagerduty       | For actions related to PagerDuty         |
     | test            | For actions related to testing           |
     | tf              | For actions related to Terraform         |
-  - [ ] Add any additional topics for an action if they apply    
-    
+  - [ ] Add any additional topics for an action if they apply
+
 
 ## Inputs
-| Parameter | Is Required | Description           |
-| --------- | ----------- | --------------------- |
-| `input-1` | true        | Description goes here |
-| `input-2` | false       | Description goes here |
 
-## Outputs
-| Output     | Description           |
-| ---------- | --------------------- |
-| `output-1` | Description goes here |
+| Parameter                  | Is Required | Description                                              |
+| -------------------------- | ----------- | -------------------------------------------------------- |
+| `action`                   | true        | Specify start, stop, or restart action to perform        |
+| `service-name`             | true        | The name of the Windows service to perform the action on |
+| `server`                   | true        | The name of the target server                            |
+| `service-account-id`       | true        | The service account name                                 |
+| `service-account-password` | true        | The service account password                             |
+| `server-public-key`        | true        | Path to remote server public ssl key                     |
 
 ## Example
 
