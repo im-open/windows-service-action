@@ -33,7 +33,7 @@ runs:
       shell: powershell
       run: |
         $secure_password = ConvertTo-SecureString -String "${{ inputs.service-account-password }}" -AsPlainText -Force
-        ${{ github.action_path }}/iis_service_action.ps1 `
+        ${{ github.action_path }}/service_action.ps1 `
           -action '${{ inputs.action }}'.ToLower() `
           -service_name '${{ inputs.service-name }}' ``
           -server '${{ inputs.server }}' `
