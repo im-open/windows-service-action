@@ -39,11 +39,18 @@ $script = {
     # This should be pre-installed on Windows 2012 R2 and later
     # https://docs.microsoft.com/en-us/powershell/module/?term=webadministration
 
-    if($Using:action -eq 'stop' -or $Using:action -eq 'restart'){
-        net stop $Using:service_name
+    $exists = Get-Service -Name $Using:service_name
+
+    if (!$exists) {
+        throw "$Using:service_name does is not registered or does exist."
     }
-    if($Using:action -eq 'start' -or $Using:action -eq 'restart'){
-        net start $Using:service_name
+    else {
+        if ($Using:action -eq 'stop' -or $Using:action -eq 'restart') {
+            net stop $Using:service_name
+        }
+        if ($Using:action -eq 'start' -or $Using:action -eq 'restart') {
+            net start $Using:service_name
+        }
     }
 }
 
