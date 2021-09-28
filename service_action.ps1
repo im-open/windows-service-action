@@ -40,7 +40,7 @@ $script = {
     # https://docs.microsoft.com/en-us/powershell/module/?term=webadministration
 
     # Only try to stop if it exists
-    $exists = Get-Service -Name $Using:service_name
+    $exists = Get-Service -Name $Using:service_name -ErrorAction 'SilentlyContinue'
     if ($exists) {
         if ($Using:action -eq 'stop' -or $Using:action -eq 'restart') {
             net stop $Using:service_name
