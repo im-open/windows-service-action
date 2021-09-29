@@ -30,6 +30,7 @@ Write-Output $display_action
 
 $credential = [PSCredential]::new($user_id, $password)
 $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
+$session = New-PSSession $server -SessionOption $so -UseSSL -Credential $credential
 
 Write-Output "Importing remote server cert..."
 Import-Certificate -Filepath $cert_path -CertStoreLocation 'Cert:\LocalMachine\Root'
@@ -51,10 +52,8 @@ $script = {
     }
 }
 
-Invoke-Command -ComputerName $server `
-    -Credential $credential `
-    -UseSSL `
-    -SessionOption $so `
+Invoke-Command `
+    -Session $session `
     -ScriptBlock $script
 
 Write-Output "$display_action_past_tense."
