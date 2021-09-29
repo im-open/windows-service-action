@@ -1,16 +1,14 @@
 name: 'Windows Service Action'
 
-description: 'This action will start or stop a Windows service on an on-prem Windows OS machine.'
+description: 'This action will start, stop or restart a Windows service on an on-prem Windows OS machine.'
 
 inputs:
   action:
-    description: |
-      Specify start, stop, or restart action to perform
+    description: 'Specify start, stop, or restart action to perform'
     default: 'start'
     required: true
   service-name:
-    description: |
-      The name of the Windows service to perform the action on
+    description: 'The name of the Windows service to perform the action on'
     required: true
   server:
     description: 'The name of the target server'
@@ -32,7 +30,7 @@ runs:
       id: action
       shell: powershell
       run: |
-        $secure_password = ConvertTo-SecureString -String "${{ inputs.service-account-password }}" -AsPlainText -Force
+        $secure_password = ConvertTo-SecureString -String '${{ inputs.service-account-password }}' -AsPlainText -Force
         ${{ github.action_path }}/service_action.ps1 `
           -action '${{ inputs.action }}'.ToLower() `
           -service_name '${{ inputs.service-name }}' `
