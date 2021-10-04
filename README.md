@@ -79,7 +79,7 @@ jobs:
       - name: Stop Service
         id: stop
         if: steps.zip.outcome == 'success'
-        uses: im-open/windows-service-action@initial-release
+        uses: im-open/windows-service-action@v1.0.0
         with:
           action: 'stop'
           server: ${{ env.WINDOWS_SERVER }}
