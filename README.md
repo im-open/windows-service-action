@@ -66,7 +66,6 @@ Prep the remote Windows server to accept WinRM management calls.  In general the
 env:
   WINDOWS_SERVER: 'win-server.domain.com'
   SERVICE_NAME: 'deploy-service'
-  SERVICE_PATH: 'c:\\services\\deploy'
   WINDOWS_SERVER_SERVICE_USER: 'server_service_user'
   WINDOWS_SERVER_SERVICE_PASSWORD: '${{ secrets.SERVER_SERVICE_SECRET }}'
   WINDOWS_SERVER_CERT_PATH: './server-connection-cert.pfx'
