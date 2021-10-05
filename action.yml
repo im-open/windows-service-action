@@ -1,22 +1,40 @@
-name: 'Composite Run Steps Action Template'
+name: 'Windows Service Action'
 
-description: 'Add description here'
+description: 'This action will start, stop or restart a Windows service on an on-prem Windows OS machine.'
 
 inputs:
-  input-1:
-    description: 'Add a description here'
+  action:
+    description: 'Specify start, stop, or restart action to perform'
+    default: 'start'
     required: true
-
-outputs:
-  output-1:
-    description: 'Add description here'
-    value: '${{ steps.step_1.outputs.world }}'
+  service-name:
+    description: 'The name of the Windows service to perform the action on'
+    required: true
+  server:
+    description: 'The name of the target server'
+    required: true
+  service-account-id:
+    description: 'The service account name'
+    required: true
+  service-account-password:
+    description: 'The service account password'
+    required: true
+  server-public-key:
+    description: 'Path to remote server public ssl key'
+    required: true
 
 runs:
   using: 'composite'
   steps:
-    - name: Step 1
-      id: step_1
-      shell: bash
+    - name: Action
+      id: action
+      shell: powershell
       run: |
-        echo "::set-output name=hello::world"
+        $secure_password = ConvertTo-SecureString -String '${{ inputs.service-account-password }}' -AsPlainText -Force
+        ${{ github.action_path }}/service_action.ps1 `
+          -action '${{ inputs.action }}'.ToLower() `
+          -service_name '${{ inputs.service-name }}' `
+          -server '${{ inputs.server }}' `
+          -user_id '${{ inputs.service-account-id }}' `
+          -password $secure_password `
+          -cert_path '${{ inputs.server-public-key }}'
