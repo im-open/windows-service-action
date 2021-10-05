@@ -50,6 +50,9 @@ $script = {
             net start $Using:service_name
         }
     }
+    else {
+        Write-Output "Service not found: $Using:service_name"
+    }
 }
 
 Invoke-Command `
