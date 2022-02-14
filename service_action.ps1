@@ -32,9 +32,10 @@ $credential = [PSCredential]::new($user_id, $password)
 $so = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck
 $session = New-PSSession $server -SessionOption $so -UseSSL -Credential $credential
 
-Write-Output "Importing remote server cert..."
-Import-Certificate -Filepath $cert_path -CertStoreLocation 'Cert:\LocalMachine\Root'
-
+if ($cert_path.Length -gt 0) {
+    Write-Output "Importing remote server cert..."
+    Import-Certificate -Filepath $cert_path -CertStoreLocation 'Cert:\LocalMachine\Root'
+}
 $script = {
     # Relies on WebAdministration Module being installed on the remote server
     # This should be pre-installed on Windows 2012 R2 and later
