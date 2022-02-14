@@ -70,7 +70,6 @@ env:
   SERVICE_NAME: 'deploy-service'
   WINDOWS_SERVER_SERVICE_USER: 'server_service_user'
   WINDOWS_SERVER_SERVICE_PASSWORD: '${{ secrets.SERVER_SERVICE_SECRET }}'
-  WINDOWS_SERVER_CERT_PATH: './server-connection-cert.cer'
 
 jobs:
   Deploy-Service:
@@ -88,7 +87,6 @@ jobs:
           service-name: ${{ env.SERVICE_NAME }}
           service-account-id: ${{ env.WINDOWS_SERVER_SERVICE_USER }}
           service-account-password: ${{ env.WINDOWS_SERVER_SERVICE_PASSWORD }}
-          server-cert-path: ${{ env.WINDOWS_SERVER_CERT_PATH }}
         continue-on-error: true
 ```
 
