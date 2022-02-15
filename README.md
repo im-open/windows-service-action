@@ -14,14 +14,14 @@ This action will start, stop or restart a Windows service on an on-prem Windows 
 
 ## Inputs
 
-| Parameter                  | Is Required | Description                                              |
-| -------------------------- | ----------- | -------------------------------------------------------- |
-| `action`                   | true        | Specify start, stop, or restart action to perform        |
-| `service-name`             | true        | The name of the Windows service to perform the action on |
-| `server`                   | true        | The name of the target server                            |
-| `service-account-id`       | true        | The service account name                                 |
-| `service-account-password` | true        | The service account password                             |
-| `server-cert-path`         | false       | Path to remote server public ssl cert                    |
+| Parameter                  | Is Required | Description                                                                                                      |
+| -------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| `action`                   | true        | Specify start, stop, or restart action to perform                                                                |
+| `service-name`             | true        | The name of the Windows service to perform the action on                                                         |
+| `server`                   | true        | The name of the target server                                                                                    |
+| `service-account-id`       | true        | The service account name                                                                                         |
+| `service-account-password` | true        | The service account password                                                                                     |
+| `server-cert-path`         | false       | Path to remote server public ssl cert, only necessary if the cert is not already installed on the actions runner |
 
 ## Prerequisites
 
