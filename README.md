@@ -21,7 +21,6 @@ This action will start, stop or restart a Windows service on an on-prem Windows 
 | `server`                   | true        | The name of the target server                            |
 | `service-account-id`       | true        | The service account name                                 |
 | `service-account-password` | true        | The service account password                             |
-| `server-public-key`        | true        | Path to remote server public ssl key                     |
 
 ## Prerequisites
 
@@ -70,7 +69,6 @@ env:
   SERVICE_NAME: 'deploy-service'
   WINDOWS_SERVER_SERVICE_USER: 'server_service_user'
   WINDOWS_SERVER_SERVICE_PASSWORD: '${{ secrets.SERVER_SERVICE_SECRET }}'
-  WINDOWS_SERVER_CERT_PATH: './server-connection-cert.pfx'
 
 jobs:
   Deploy-Service:
@@ -81,14 +79,13 @@ jobs:
       - name: Stop Service
         id: stop
         if: steps.zip.outcome == 'success'
-        uses: im-open/windows-service-action@v1.0.1
+        uses: im-open/windows-service-action@v2.0.0
         with:
           action: 'stop'
           server: ${{ env.WINDOWS_SERVER }}
           service-name: ${{ env.SERVICE_NAME }}
           service-account-id: ${{ env.WINDOWS_SERVER_SERVICE_USER }}
           service-account-password: ${{ env.WINDOWS_SERVER_SERVICE_PASSWORD }}
-          server-public-key: ${{ env.WINDOWS_SERVER_CERT_PATH }}
         continue-on-error: true
 ```
 
