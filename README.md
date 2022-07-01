@@ -24,8 +24,8 @@ This action will start, stop or restart a Windows service on a target Windows OS
 
 ## Prerequisites
 
-1. The target windows machine that will be running the service will need to have a WinRM SSL listener setup.  This will have to be setup through a service ticket because a specifically formatted SSL certificate will need be set up in the correct certificate container.
-2. A deployment service principal will need to be created and put into the local admins group of the target server.
+1. The target windows machine that will be running the service will need to have a WinRM SSL listener setup. This will have to be setup through a service ticket because a specifically formatted SSL certificate will need be set up in the correct certificate container.
+2. A deployment service account will need to be created and put into the local admins group of the target server. This has to be done through a service desk ticket by an team.
 
 ## Example
 
