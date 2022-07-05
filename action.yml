@@ -1,6 +1,6 @@
 name: 'Windows Service Action'
 
-description: 'This action will start, stop or restart a Windows service on an on-prem Windows OS machine.'
+description: 'This action will start, stop or restart a Windows service on a target Windows OS machine.'
 
 inputs:
   action:
