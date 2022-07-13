@@ -1,6 +1,6 @@
 # Windows Service Action
 
-This action will start, stop or restart a Windows service on an on-prem Windows OS machine.
+This action will start, stop or restart a Windows service on a target Windows OS machine.
 
 ## Index <!-- omit in toc -->
 
@@ -79,7 +79,7 @@ jobs:
       - name: Stop Service
         id: stop
         if: steps.zip.outcome == 'success'
-        uses: im-open/windows-service-action@v2.0.0
+        uses: im-open/windows-service-action@v2.0.2
         with:
           action: 'stop'
           server: ${{ env.WINDOWS_SERVER }}
@@ -92,6 +92,7 @@ jobs:
 ## Contributing
 
 When creating new PRs please ensure:
+
 1. For major or minor changes, at least one of the commit messages contains the appropriate `+semver:` keywords listed under [Incrementing the Version](#incrementing-the-version).
 2. The `README.md` example has been updated with the new version.  See [Incrementing the Version](#incrementing-the-version).
 3. The action code does not contain sensitive information.
